@@ -2,6 +2,7 @@
 
 namespace AndresMazza\UserBundle\Controller;
 
+use AndresMazza\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -10,7 +11,17 @@ class UserController extends Controller
     public function indexAction()
     {
         //return $this->render('AndresMazzaUserBundle:Default:index.html.twig');
-        return new Response('Bienvenido a mi modulo de usuarios.');
+        //return new Response('Bienvenido a mi modulo de usuarios.');
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AndresMazzaUserBundle:User')->findAll();
+        $res = 'Lista de Usuarios: <br>';
+
+        foreach ($users as $user) {
+            /* @var $user User */
+            $res .= $user->getUsername(). '::' . $user->getEmail().'<br>';
+        }
+        return new Response($res);
+
     }
 
     public function articlesAction($page) {
