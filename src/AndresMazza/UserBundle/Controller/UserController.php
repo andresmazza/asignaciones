@@ -42,7 +42,18 @@ class UserController extends Controller
     public function viewAction($id)
     {
         $repository = $this->getDoctrine()->getRepository('AndresMazzaUserBundle:User');
-        return new Response('view Action');
+        $user = $repository->findOneBy(array('id' => $id));
+        $admin = $repository->findOneByUsername('andres');
+        if ($admin) {
+            echo "admin: ". $admin->getUsername()."!!!<br>";
+        }
+        if($user) {
+            $res = $user->getUsername() . '::' . $user->getEmail() . '<br>';
+        }
+        else {
+            $res = null;
+        }
+        return new Response($res);
     }
 
     public function deleteAction($id)
