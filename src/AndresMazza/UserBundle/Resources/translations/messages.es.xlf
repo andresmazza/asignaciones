@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>New User</source>
+                <target>Nuevo Usuario</target>
+            </trans-unit>
+            <trans-unit id="2">
+                 <source>Username</source>
+                 <target>Usuario</target>
+            </trans-unit>
+            <trans-unit id="3">
+                 <source>First name</source>
+                 <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="4">
+                 <source>Last name</source>
+                 <target>Apellido</target>
+            </trans-unit>
+            <trans-unit id="5">
+                 <source>Email</source>
+                 <target>Correo electrónico</target>
+            </trans-unit>
+            <trans-unit id="6">
+                 <source>Password</source>
+                 <target>Contraseña</target>
+            </trans-unit>
+            <trans-unit id="7">
+                 <source>Role</source>
+                 <target>Rol</target>
+            </trans-unit>
+            <trans-unit id="8">
+                 <source>Your Username</source>
+                 <target>Ingrese Nombre de usuario</target>
+            </trans-unit>
+         <trans-unit id="9">
+                 <source>Created</source>
+                 <target>Creado</target>
+            </trans-unit>
+         <trans-unit id="10">
+                 <source>Updated</source>
+                 <target>Modificado</target>
+            </trans-unit>
+    <trans-unit id="11">
+                 <source>Action</source>
+                 <target>Acciones</target>
+            </trans-unit>
+    <trans-unit id="12">
+                 <source>view</source>
+                 <target>Ver</target>
+            </trans-unit>
+    <trans-unit id="13">
+                 <source>edit</source>
+                 <target>Editar</target>
+            </trans-unit>
+
+    <trans-unit id="14">
+                 <source>delete</source>
+                 <target>Borrar</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
