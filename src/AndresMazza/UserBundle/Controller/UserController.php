@@ -14,13 +14,11 @@ class UserController extends Controller
         //return new Response('Bienvenido a mi modulo de usuarios.');
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('AndresMazzaUserBundle:User')->findAll();
-        $res = 'Lista de Usuarios: <br>';
+//        $res = 'Lista de Usuarios: <br>';
 
-        foreach ($users as $user) {
-            /* @var $user User */
-            $res .= $user->getUsername(). '::' . $user->getEmail().'<br>';
-        }
-        return new Response($res);
+        return $this->render('AndresMazzaUserBundle:User:index.html.twig', array(
+            'users' => $users
+        ));
 
     }
 
