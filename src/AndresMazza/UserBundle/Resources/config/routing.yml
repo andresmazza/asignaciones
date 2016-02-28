@@ -22,6 +22,13 @@ andres_mazza_user_create:
     defaults: { _controller: AndresMazzaUserBundle:User:create }
     methods: POST
 
+andres_mazza_redirect_add:
+    path:   /user/create
+    defaults:
+        _controller: AndresMazzaUserBundle:User:add
+        path:   /user/add
+        permanent: true
+
 andres_mazza_user_edit:
     path:   /user/edit/{id}
     defaults: { _controller: AndresMazzaUserBundle:User:edit }
