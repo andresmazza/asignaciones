@@ -57,3 +57,9 @@ retoco algunos annotations, por ejemplo en role.Agrego un Enum
 Luego con la entidad ya creada genero la tabla mysql
 
 # php app/console doctrine:schema:update --force
+
+Forms
+=====
+Crear un formulario de una Entidad
+php app/console doctrine:generate:form AndresMazzaUserBundle:User
+  me genera el file src/AndresMazza/UserBundle/Form/UserType.php

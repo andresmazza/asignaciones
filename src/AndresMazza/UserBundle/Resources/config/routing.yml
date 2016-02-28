@@ -17,6 +17,11 @@ andres_mazza_user_add:
     path:   /user/add
     defaults: { _controller: AndresMazzaUserBundle:User:add }
 
+andres_mazza_user_create:
+    path:   /user/create
+    defaults: { _controller: AndresMazzaUserBundle:User:create }
+    methods: POST
+
 andres_mazza_user_edit:
     path:   /user/edit/{id}
     defaults: { _controller: AndresMazzaUserBundle:User:edit }
