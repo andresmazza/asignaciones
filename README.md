@@ -32,8 +32,15 @@ $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
 
 
 $ php app/console security:check
+--------------------
+
+Busca las diferencias con mis schemmas y la base actual
+# php app/console doctrine:schema:update --dump-sql --em=dynamic
+
 
 
 https://asignaciones-andresmazza.c9users.io/phpmyadmin/
 
 https://asignaciones-andresmazza.c9users.io/web/app_dev.php
+
+
