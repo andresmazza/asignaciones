@@ -10,16 +10,24 @@ use AndresMazza\UserBundle\Form\UserType;
 
 class UserController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         //return $this->render('AndresMazzaUserBundle:Default:index.html.twig');
         //return new Response('Bienvenido a mi modulo de usuarios.');
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('AndresMazzaUserBundle:User')->findAll();
-//        $res = 'Lista de Usuarios: <br>';
+       // $users = $em->getRepository('AndresMazzaUserBundle:User')->findAll();
 
+        $dql = "SELECT u FROM AndresMazzaUserBundle:User u";
+        $users = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $users, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            5/*limit per page*/
+        );
         return $this->render('AndresMazzaUserBundle:User:index.html.twig', array(
-            'users' => $users
+            'pagination' => $pagination
         ));
 
     }
@@ -60,6 +68,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            $this->addFlash('notice','The User has been created');
             return $this->redirectToRoute('andres_mazza_user_index');
         }
         return $this->render('AndresMazzaUserBundle:User:add.html.twig',array('form' => $form->createView()));
