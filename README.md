@@ -3,6 +3,7 @@ asignaciones
 
 A Symfony project created on February 27, 2016, 3:59 pm.
 
+<<<<<<< HEAD
 Symfony
 Linux and Mac OS X Systems
 Open your command console and execute the following commands:
@@ -39,6 +40,8 @@ https://asignaciones-andresmazza.c9users.io/phpmyadmin/
 https://asignaciones-andresmazza.c9users.io/web/app_dev.php
 
 
+=======
+>>>>>>> 7b448d94ccea38da1535ccb490727204968498fd
 Creacion de la entidad
 ======================
 
