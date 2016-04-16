@@ -36,9 +36,9 @@
             <td>{{ user.getCreatedAt | date('Y-m-d H:i:s') }}</td>
             <td>{{ user.getUpdatedAt | date('Y-m-d H:i:s') }}</td>
             <td class="actions">
-                <a href="#" class="btn btn-sm btn-info"> {{ 'view' | trans }}</a>
-                <a href="#" class="btn btn-sm btn-primary">{{ 'edit' | trans }}</a>
-                <a href="#" class="btn btn-sm btn-danger btn-delete">{{ 'delete' | trans }}</a>
+                <a href="{{ path('andres_mazza_user_view', { id: user.id}) }}" class="btn btn-sm btn-info"> {{ 'view' | trans }}</a>
+                <a href="{{ path('andres_mazza_user_edit', { id: user.id}) }}" class="btn btn-sm btn-primary">{{ 'edit' | trans }}</a>
+                <a href="{{ path('andres_mazza_user_delete', { id: user.id}) }}" class="btn btn-sm btn-danger btn-delete">{{ 'delete' | trans }}</a>
             </td>
         </tr>
     {% endfor %}

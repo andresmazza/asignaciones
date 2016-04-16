@@ -17,7 +17,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
        // $users = $em->getRepository('AndresMazzaUserBundle:User')->findAll();
 
-        $dql = "SELECT u FROM AndresMazzaUserBundle:User u";
+        $dql = "SELECT u FROM AndresMazzaUserBundle:User u Order By u.id DESC";
         $users = $em->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');
@@ -77,7 +77,47 @@ class UserController extends Controller
 
     public function editAction($id)
     {
-        return new Response('Edit Action');
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AndresMazzaUserBundle:User')->find($id);
+        if (!$user) {
+            $messageException = $this->get('translator')->trans('User not found');
+            throw $this->createNotFoundException($messageException);
+        }
+        $form = $this->createEditForm($user);
+
+        return $this->render('AndresMazzaUserBundle:User:edit.html.twig',array('form' => $form->createView()));
+    }
+
+    private function createEditForm(User $entity) {
+        $form = $this->createForm(new UserType(),$entity , array(
+                'action' => $this->generateUrl('andres_mazza_user_update',array('id' => $entity->getId())),
+                'method' => 'PUT'
+            )
+        );
+        return $form;
+    }
+
+
+    public function updateAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AndresMazzaUserBundle:User')->find($id);
+        if (!$user) {
+            $messageException = $this->get('translator')->trans('User not found');
+            throw $this->createNotFoundException($messageException);
+        }
+        $form = $this->createEditForm($user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+            $successMessage = $this->get('translator')->trans('The user has been modificated');
+            $this->addFlash('notice',$successMessage);
+            return $this->redirectToRoute('andres_mazza_user_edit', array( 'id' => $user->getId()));
+        }
+        return $this->render('@AndresMazzaUser/User/edit.html.twig',array(
+            'user' => $user,
+            'form' => $form->createView())
+        );
     }
 
     public function viewAction($id)

@@ -35,6 +35,20 @@ andres_mazza_user_edit:
     requirements:
         id: \d+
 
+andres_mazza_user_update:
+    path:   /user/update/{id}
+    defaults: { _controller: AndresMazzaUserBundle:User:update }
+    methods: [ POST , PUT ]
+    requirements:
+        id: \d+
+
+andres_mazza_user_redirect_edit:
+    path:   /user/update/{id}
+    defaults:
+        _controller: AndresMazzaUserBundle:User:edit
+        path:   /user/edit/{id}
+        permanent: true
+
 andres_mazza_user_view:
     path:   /user/view/{id}
     defaults: { _controller: AndresMazzaUserBundle:User:view }
