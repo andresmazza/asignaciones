@@ -44,3 +44,30 @@ https://asignaciones-andresmazza.c9users.io/phpmyadmin/
 https://asignaciones-andresmazza.c9users.io/web/app_dev.php
 
 
+<<<<<<< HEAD
+=======
+Creacion de la entidad
+======================
+
+# php app/console doctrine:generate:entity
+
+--->voy agregando los campos y sus tipos
+
+ una vez generada la entidad cambio en el annotation a que tabla hace referencia
+
+ /* @ORM\Table(name="users")
+
+retoco algunos annotations, por ejemplo en role.Agrego un Enum
+
+* @ORM\Column(name="role", type="string", columnDefinition="ENUM('ROLE_ADMIN','ROLE_USER')", length=50)
+
+Luego con la entidad ya creada genero la tabla mysql
+
+# php app/console doctrine:schema:update --force
+
+Forms
+=====
+Crear un formulario de una Entidad
+php app/console doctrine:generate:form AndresMazzaUserBundle:User
+  me genera el file src/AndresMazza/UserBundle/Form/UserType.php
+>>>>>>> 927e629ea867f4f88cffb15fc1fa0a156a89dbde
